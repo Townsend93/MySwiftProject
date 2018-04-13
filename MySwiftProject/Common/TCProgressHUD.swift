@@ -24,7 +24,6 @@ class TCProgressHUD: NSObject {
     private static func configureBaseSetting(_ hud:MBProgressHUD) {
         hud.bezelView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         hud.contentColor = UIColor.white
-        
         //hud.label.font = UIFont.systemFont(ofSize: 16)
         // hud.label.textColor = UIColor.white
     }
@@ -41,15 +40,18 @@ class TCProgressHUD: NSObject {
         return hud;
     }
     
+    /*
     static func showGif(_ text: String, inView: UIView) -> MBProgressHUD {
         let hud =  MBProgressHUD.showAdded(to: inView, animated: true)
         configureBaseSetting(hud)
         hud.label.text = text
         hud.animationType = .zoom
-        hud.mode = .indeterminate
+        hud.mode = .customView
+        //hud.customView = gif
         
         return hud;
     }
+    */
     
     static func showSuccess(_ text: String) {
         
@@ -93,5 +95,7 @@ class TCProgressHUD: NSObject {
         hud.mode = .text
         hud.hide(animated: true, afterDelay: afterHideTime)
     }
+    
+
     
 }

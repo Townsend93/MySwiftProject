@@ -51,7 +51,7 @@ class Entity: NSObject, NSCoding{
     func recursionArray(with array:Array<Any>, key: String) -> Array<Any> {
         // 对变量类型进行判断 若错误的设置了为array 属性 则 assert
         var clsName = self.getClassName(propertyName: key, pure: true)
-        if clsName.characters.count<=0 {
+        if clsName.count<=0 {
             clsName = self.getClassName(propertyName: key, pure: false)
         }
         var equal = false
@@ -71,7 +71,8 @@ class Entity: NSObject, NSCoding{
                 if !value.isEmpty {
                     // 拼凑成完整版的类名 参考：property_getAttributes 格式 “_TtC” + 工程名字数+工程名+类名字数+类名 这样才可以反向得到一个类
                     let projectName = Bundle.main.infoDictionary?["CFBundleExecutable"] as! String
-                    let clsName = "_TtC" + String(projectName.characters.count) + projectName + String(value.characters.count) + value
+                   
+                    let clsName = "_TtC" + String(projectName.count) + projectName + String(value.count) + value
                     
                     let a = NSClassFromString(clsName) as! Entity.Type
                     let index = (array as NSArray).index(of: item)                    
@@ -86,7 +87,7 @@ class Entity: NSObject, NSCoding{
     
     func getClassName(propertyName: String, pure: Bool) ->String {
         let property = class_getProperty(self.classForCoder, UnsafePointer<Int8>(propertyName))
-        var propertyString = String(cString: property_getAttributes(property)).components(separatedBy: "\"")[1]
+        var propertyString = String(cString: property_getAttributes(property!)!).components(separatedBy: "\"")[1]
         if !pure {
             // 针对自定义类型 而言 会有一堆修饰字符
             return propertyString

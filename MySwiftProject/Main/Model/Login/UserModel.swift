@@ -8,26 +8,26 @@
 
 import UIKit
 
-class UserModel: NSObject {
+class UserModel: BaseModel {
 
-    var account: String?
-    var password: String?
+    var code: Int?
+    var msg: String = ""
     
-    var AliasID: String?
-    var InvitationCode: String?
-    var Token: String?
+    var info: User?
     
+   
     
-    convenience init(_ dic:[String: Any]?) {
-        
-        self.init()
-        account = dic?["account"] as? String
-        password = dic?["password"] as? String
-        
-        AliasID = dic?["AliasID"] as? String
-        InvitationCode = dic?["InvitationCode"] as? String
-        Token = dic?["Token"] as? String
-        
-    }
+}
+
+class User: BaseModel {
+    
+    var account: String = ""
+    var password: String = ""
+    
+    var AliasID: String = ""
+    var InvitationCode: String = ""
+    var Token: String = ""
+
+   
     
 }

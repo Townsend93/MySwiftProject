@@ -14,17 +14,6 @@ class LoginViewModel: NSObject {
         
         NetworkTool.request(isNeedToken:false, param: ["action":"login","account":account, "password":password], successBlcok: { (response) in
             
-            var dic = response as? [String: Any];
-            
-            
-            SaveTool.save(value: dic?["Data"], forKey: kAccountInfoKey)
-            
-            SaveTool.save(value: ["account":account, "password":password], forKey: kLogin_currentAccount)
-            
-            SaveTool.save(value: true, forKey: kIsLogin)
-            
-            print(SaveTool.getToken())
-            
             loginBlock()
             
         }) { (error) in

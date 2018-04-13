@@ -35,22 +35,30 @@ class NetworkTool: NSObject {
             dic["token"] = SaveTool.getToken()
         }
         
-        Alamofire.request(baseUrl, method: method, parameters: dic ,      encoding: URLEncoding.default).responseJSON { (response) in
+        Alamofire.request(baseUrl, method: method, parameters: dic ,encoding: URLEncoding.default).responseJSON { (response) in
             
             guard response.result.isSuccess else {//失败
                 failureBlock(response.error)
                 return
             }
             
+            
+//            if let model = try? JSONDecoder().decode(UserModel.self, from: response.result.value!) {
+//
+//                print(model.code ?? "no_code",model.msg,model.info?.Token ?? "no_token")
+//            }
+            
+            return;
+ 
             let json = response.result.value as? [String: Any]
             let code = Int((json?["Code"] as? String) ?? "123")
-            
+            print(json ?? "")
                 //code 处理
-            guard  code  == 000 else {//成功
+            guard  code  != 000 else {//成功
                    successBlcok(response.result.value)
                 return
             }
-            guard code == 997 else {//token过期
+            guard code != 997 else {//token过期
                 //自动登录
                 LoginViewModel.autoLogin {
                     print("自动登录成功")

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     
     //MARK: createBtn
     fileprivate func createBtn (withTitle title: String, normalColor: UIColor?, highlightedColor: UIColor?, disableColor: UIColor = navItemDisableColor) -> UIButton {
@@ -103,7 +103,7 @@ extension UIViewController {
         let btn = createBtn(withTitle: title, normalColor: normalColor ?? navItemNormalColor, highlightedColor: highlightedColor ?? navItemHighlightColor)
         btn.addTarget(self, action: #selector(rightClick(sender:)), for: .touchUpInside)
         let item = UIBarButtonItem(customView: btn)
-        navigationItem.leftBarButtonItems = insertFixSpace(items: [item])
+        navigationItem.rightBarButtonItems = insertFixSpace(items: [item])
         
         return btn
     }
@@ -113,7 +113,7 @@ extension UIViewController {
         let btn = createBtn(withImage: normalImage, highlightedImage: highlightedImage)
         btn.addTarget(self, action: #selector(rightClick(sender:)), for: .touchUpInside)
         let item = UIBarButtonItem(customView: btn)
-        navigationItem.leftBarButtonItems = insertFixSpace(items: [item])
+        navigationItem.rightBarButtonItems = insertFixSpace(items: [item])
         
         return btn
     }

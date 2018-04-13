@@ -14,6 +14,7 @@ class BaseNavController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       navigationBar.shadowImage = UIImage()
         
     }
     

@@ -7,3 +7,18 @@
 //
 
 import Foundation
+import UIKit
+
+
+extension UITableView {
+    
+    public func render() {
+        backgroundColor = tableColor
+        tableFooterView = UIView()
+        separatorColor = partingLineColor
+        let kInset: UIEdgeInsets = separatorInset
+        separatorInset = UIEdgeInsetsMake(kInset.top, 12, kInset.bottom, kInset.right)
+    }
+    
+    
+}

@@ -21,6 +21,10 @@ let navItemHeight: CGFloat = 35
 
 let navItemMargin: CGFloat = 12
 
+let navHeight: CGFloat = (is_iPhoneX ? 44 + 44 : 44 + 20)
+
+let tabBarHeight: CGFloat = (is_iPhoneX ? 49 + 34 : 49 + 0)
+
 
 //MARK: Color
 
@@ -51,6 +55,9 @@ let navItemFont = UIFont.systemFont(ofSize: 16)
 
 let navTitleFont = UIFont.boldSystemFont(ofSize: 17)
 
+//MARK: page
+
+let pageSize = 20
 
 
 //MARK: Key
@@ -68,6 +75,17 @@ let kRefreshNotificationName: String = "kRefreshNotificationName"
 
 
 //MARK: system
-let kWindow = (UIApplication.shared.delegate?.window)!
+let kWindow = UIApplication.shared.delegate?.window!
+
+let is_iPhoneX = UIDevice.current.modelName == "iPhone X" ? true : false
+
+//应用程序信息
+let infoDictionary = Bundle.main.infoDictionary!
+let appDisplayName = infoDictionary["CFBundleDisplayName"] //程序名称
+let majorVersion = infoDictionary["CFBundleShortVersionString"]//主程序版本号
+let minorVersion = infoDictionary["CFBundleVersion"]//版本号（内部标示）
+let appVersion = majorVersion as! String
+
+
 
 

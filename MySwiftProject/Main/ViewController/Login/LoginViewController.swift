@@ -59,7 +59,7 @@ class LoginViewController: BaseViewController {
     
     
     
-    //MARK: lazy property
+    //MARK: lazy var
     
     private lazy var accountTf: UITextField = {
         
@@ -104,8 +104,12 @@ class LoginViewController: BaseViewController {
             return
         }
         
+        let hud = TCProgressHUD.showLoading("loading", inView: view)
+        
         LoginViewModel.login(account: accountTf.text!, password: passwordTf.text!, loginBlock: {
-            
+            hud.hide(animated: true, afterDelay: 1.5)
+            kWindow?.rootViewController = TabBarController()
+           
         })
     }
     

@@ -8,4 +8,20 @@
 
 import Foundation
 
-ex
+extension Array where Element: Equatable {
+
+    func makeSameArray<T>(repeating item: T, numberOfTimes: Int) -> [T] {
+        var result = [T]()
+        for _ in 0..<numberOfTimes {
+            result.append(item)
+        }
+        return result
+    }
+    
+    // Remove first collection element that is equal to the given `object`:
+   
+    
+   
+    
+    
+}

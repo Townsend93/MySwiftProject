@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     
     //example: UIColr(hexString:"#333333"),UIColr(hexString:"333333")
     convenience init(hexString: String) {

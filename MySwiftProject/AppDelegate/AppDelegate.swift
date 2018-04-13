@@ -32,12 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK: rootVC
     private func getRootViewController () -> UIViewController {
-        
-       
-        
-        
-        return LoginViewController()
-        //return TabBarController()
+    
+        let islogin = SaveTool.getValue(forKey: kIsLogin) as? Bool
+        return (islogin ?? false) ? TabBarController() : LoginViewController()
+
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

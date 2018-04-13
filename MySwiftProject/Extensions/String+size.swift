@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-extension String {
+public extension String {
+    
+    
     
     func getSize(withFont font: UIFont, size: CGSize) -> CGSize {
         
